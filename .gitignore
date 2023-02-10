@@ -5,3 +5,4 @@ sensitive_data/*
 terraform.tfstate
 terraform.tfstate.backup
 .terraform/
+terraform.tfvars
