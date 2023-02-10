@@ -10,7 +10,7 @@ resource "aws_instance" "first_ec2" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = file("./test-key-pair.pem")
+    private_key = file("../test-key-pair.pem")
     host        = self.public_ip
     agent       = false
     timeout     = "3m"
