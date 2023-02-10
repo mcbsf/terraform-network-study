@@ -1,0 +1,7 @@
+test-key-pair.pem
+test.txt
+.terraform.lock.hcl
+sensitive_data/*
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/

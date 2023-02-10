@@ -1,0 +1,62 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_eip.mario_eip (expand)" [label = "aws_eip.mario_eip", shape = "box"]
+		"[root] aws_eip_association.eip_assoc (expand)" [label = "aws_eip_association.eip_assoc", shape = "box"]
+		"[root] aws_elb.first_load_balancer (expand)" [label = "aws_elb.first_load_balancer", shape = "box"]
+		"[root] aws_instance.first_ec2 (expand)" [label = "aws_instance.first_ec2", shape = "box"]
+		"[root] aws_instance.second_ec2 (expand)" [label = "aws_instance.second_ec2", shape = "box"]
+		"[root] aws_s3_bucket.first_s3 (expand)" [label = "aws_s3_bucket.first_s3", shape = "box"]
+		"[root] aws_s3_bucket_policy.allow_elb_logging (expand)" [label = "aws_s3_bucket_policy.allow_elb_logging", shape = "box"]
+		"[root] aws_security_group.allow_tls (expand)" [label = "aws_security_group.allow_tls", shape = "box"]
+		"[root] aws_security_group.allow_tls_dinamically (expand)" [label = "aws_security_group.allow_tls_dinamically", shape = "box"]
+		"[root] data.aws_ami.app_ami (expand)" [label = "data.aws_ami.app_ami", shape = "box"]
+		"[root] data.aws_elb_service_account.main (expand)" [label = "data.aws_elb_service_account.main", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.available_tzs" [label = "var.available_tzs", shape = "note"]
+		"[root] var.env_names" [label = "var.env_names", shape = "note"]
+		"[root] var.instance_type" [label = "var.instance_type", shape = "note"]
+		"[root] var.security_group_ports" [label = "var.security_group_ports", shape = "note"]
+		"[root] var.size" [label = "var.size", shape = "note"]
+		"[root] var.timeout" [label = "var.timeout", shape = "note"]
+		"[root] var.vpn_ip" [label = "var.vpn_ip", shape = "note"]
+		"[root] aws_eip.mario_eip (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_eip_association.eip_assoc (expand)" -> "[root] aws_eip.mario_eip (expand)"
+		"[root] aws_eip_association.eip_assoc (expand)" -> "[root] aws_instance.first_ec2 (expand)"
+		"[root] aws_elb.first_load_balancer (expand)" -> "[root] aws_s3_bucket.first_s3 (expand)"
+		"[root] aws_elb.first_load_balancer (expand)" -> "[root] var.available_tzs"
+		"[root] aws_elb.first_load_balancer (expand)" -> "[root] var.timeout"
+		"[root] aws_instance.first_ec2 (expand)" -> "[root] data.aws_ami.app_ami (expand)"
+		"[root] aws_instance.first_ec2 (expand)" -> "[root] var.size"
+		"[root] aws_instance.second_ec2 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_instance.second_ec2 (expand)" -> "[root] var.env_names"
+		"[root] aws_instance.second_ec2 (expand)" -> "[root] var.size"
+		"[root] aws_s3_bucket.first_s3 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_s3_bucket_policy.allow_elb_logging (expand)" -> "[root] aws_s3_bucket.first_s3 (expand)"
+		"[root] aws_s3_bucket_policy.allow_elb_logging (expand)" -> "[root] data.aws_elb_service_account.main (expand)"
+		"[root] aws_security_group.allow_tls (expand)" -> "[root] aws_eip.mario_eip (expand)"
+		"[root] aws_security_group.allow_tls (expand)" -> "[root] local.common_tags (expand)"
+		"[root] aws_security_group.allow_tls (expand)" -> "[root] var.vpn_ip"
+		"[root] aws_security_group.allow_tls_dinamically (expand)" -> "[root] local.common_tags (expand)"
+		"[root] aws_security_group.allow_tls_dinamically (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_security_group.allow_tls_dinamically (expand)" -> "[root] var.security_group_ports"
+		"[root] data.aws_ami.app_ami (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_elb_service_account.main (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] output.arns (expand)" -> "[root] aws_instance.second_ec2 (expand)"
+		"[root] output.eip (expand)" -> "[root] aws_eip.mario_eip (expand)"
+		"[root] output.mys3bucket (expand)" -> "[root] aws_s3_bucket.first_s3 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_eip_association.eip_assoc (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_elb.first_load_balancer (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.second_ec2 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_policy.allow_elb_logging (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_security_group.allow_tls (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_security_group.allow_tls_dinamically (expand)"
+		"[root] root" -> "[root] output.arns (expand)"
+		"[root] root" -> "[root] output.eip (expand)"
+		"[root] root" -> "[root] output.mys3bucket (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] var.instance_type"
+	}
+}
+
