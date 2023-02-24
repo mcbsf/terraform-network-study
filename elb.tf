@@ -3,7 +3,7 @@
 data "aws_elb_service_account" "main" {}
 
 resource "aws_s3_bucket_policy" "allow_elb_logging" {
-  bucket = aws_s3_bucket.first_s3.id
+  bucket = aws_s3_bucket.security_s3.id
   policy = <<POLICY
 {
   "Id": "Policy",
