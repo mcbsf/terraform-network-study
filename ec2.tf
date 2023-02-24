@@ -43,17 +43,15 @@ resource "aws_instance" "second_ec2" {
 }
 */
 
-module "ec2module"{
+module "ec2module" {
   source = "./modules/dev/ec2"
   #ec2_instance_type = "t2.nano" works but costs.
 }
-
+/*
 module "aws_ec2" {
-  source = "./modules/dev/aws_ec2"
+  source                = "./modules/dev/aws_ec2"
   ec2_security_group_id = [aws_security_group.allow_tls_dinamically.id]
 }
-
-/*
 output "ec2_arns" {
   value = aws_instance.second_ec2[*].arn
 }

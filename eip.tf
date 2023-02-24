@@ -4,7 +4,7 @@ resource "aws_eip" "mario_eip" {
 }
 
 output "eip" {
-  value = aws_eip.mario_eip
+  value = aws_eip.mario_eip.public_ip
 }
 
 resource "aws_eip_association" "eip_assoc" {
