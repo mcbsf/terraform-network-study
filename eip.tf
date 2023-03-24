@@ -11,3 +11,9 @@ resource "aws_eip_association" "eip_assoc" {
   instance_id   = aws_instance.first_ec2.id
   allocation_id = aws_eip.mario_eip.id
 }
+
+
+resource "aws_eip" "mario_eip2" {
+  vpc = true
+  provider = aws.provider2
+}
