@@ -5,10 +5,12 @@ variable "instance_type" {
 
 variable "timeout" {
   type = number
+  default = 20
 }
 
 variable "available_tzs" {
   type = list(string)
+  default = ["us-east-1", "us-east-2"]
 }
 
 variable "size" {
